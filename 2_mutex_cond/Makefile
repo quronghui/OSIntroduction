@@ -29,10 +29,10 @@ producter_comsumer.o: producter_comsumer.c mutex_api.h cond_api.h
 	$(CC)	$(CFLAGS)	-c	$(INCLUDE)	$<	-o	$@
 
 
-#clean
 clean:	
-	@echo	"cleanning compile file "
-	-rm	*.o
+	@echo "cleanning project"
 	-rm	condition_vailable	producter_comsumer
-	@echo	"cleanning  target file"
+	-rm *.o 
+	@echo "cleanning complie"
 .PHONY:	clean
+

@@ -1,4 +1,4 @@
-// 题目五: 典型模型: 生产者和消费者(存在界缓冲区)
+// 题目四: 通过条件变量和锁实现典型模型  --  生产者和消费者(存在界缓冲区)
 /*
 *   1. 解题思路注意 :
         a. 共享变量进行标识: 何时producter能进入buffer?    何时consumer能进入buffer?
@@ -69,7 +69,6 @@ void    *consumer(void *arg)
         while( count == 0 )
             Pthread_cond_wait(&full, &mutex);   // 消费者, 等待buffer为满的信号
         int tmp = get();
-        
         Pthread_cond_signal(&empty);
 
         Pthread_mutex_unlock(&mutex);

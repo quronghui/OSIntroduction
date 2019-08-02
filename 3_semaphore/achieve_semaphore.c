@@ -1,5 +1,11 @@
 // 题目五:  通过锁和条件变量实现 信号量
-//
+/*
+*   1. 解题思路
+        a. 锁实现时: 共享变量是 0和1之间切换;
+            semaphore 实现时, 是通过wait() 和post() 加1和减1
+        b. 唤醒机制
+            使用条件变量实现
+*/
 #include <stdio.h>
 #include <pthread.h>
 #include <assert.h>
@@ -39,7 +45,7 @@ void Zem_post(Zem_t *s)
 {
     int rc ;
     rc = pthread_mutex_lock(&s->lock);  assert(rc==0);
-    
+
     s->value ++;
     rc = pthread_cond_signal(&s->cond);     assert(rc==0);
 

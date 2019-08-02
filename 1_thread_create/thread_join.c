@@ -1,4 +1,4 @@
-// 题目三: 线程的完成
+// 题目三: 线程的创建, 通过join(), 让父线程等待子线程的完成
 /*
 *   1. 代码思路: 主函数初始化一个结构体的值, 创建线程进行值的打印;
                             然后线程中初始化另外一个结构体, 返回到主函数进行打印;
@@ -53,4 +53,6 @@ int main(int argv, char *argc[])
     rc = pthread_join(p, (void **)&m);    assert(rc == 0);                       // 加强制函数说明 (void **)&m
     
     printf(" return value %d %d.\n ", m->x, m->y);      // 输出返回的值
+
+    pthread_mutex_t look = PTHREAD_MUTEX_INITIALIZER;
 }
